@@ -86,23 +86,11 @@ public class ServiceClient {
 
     private static String getServiceUrl(HttpServletRequest req, KeycloakSecurityContext session) {
         String uri = req.getServletContext().getInitParameter(SERVICE_URI_INIT_PARAM_NAME);
-        if (uri != null && !uri.contains("localhost"))
-        	return uri;
-
-    	String ip = req.getLocalAddr();
-
-        if (ip != null){
-	        ip = "localhost";
-	        try {
-	        	ip = java.net.InetAddress.getLocalHost().getHostAddress();
-	        } catch (Exception e){
-	            e.printStackTrace();
-	        }
+        if (uri == null || uri.contains("localhost")) {
+            uri = System.getProperty("keycloak.serviceUrl", "http://localhost:8080/service");
         }
-        
-        System.out.println("!!!!! ip " + ip);
 
-        return "http://" + ip + ":8080/service";
+        return uri;
     }
     
     public static HttpClient createHttpClient_AcceptsUntrustedCerts() throws Exception {
