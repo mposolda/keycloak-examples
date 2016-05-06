@@ -14,8 +14,8 @@ To install and run all the WAR-based examples:
 5. [Download](http://keycloak.jboss.org/keycloak/downloads.html?dir=0%3Dadapters/saml%3B) the Keycloak SAML adapter for WildFly.  Unzip this adapter on top of WildFly.  It's OK to overwrite modules.
 6. *cd &lt;Keycloak Home&gt;/bin*
 7. *standalone(.bat or .sh) -Djboss.socket.binding.port-offset=100*
-8. In your browser, go to <http://localhost:8180/auth/admin/index.html>
-9. Login with admin/admin and change the password when prompted.
+8. In your browser, go to <http://localhost:8180/auth/> and setup initial admin user (in later steps, we assume username "admin" )
+9. Go to <http://localhost:8180/auth/admin/index.html> and login as admin.
 10. In the upper lefthand corner, click on Master->Add Realm
 11. Click "Select File" and choose *examples-realm.json* from the root of the keycloak-examples repo from step 1.
 12. *cd &lt;WildFly Home&gt;/bin*
